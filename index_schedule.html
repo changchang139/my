@@ -18,9 +18,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
     integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <!-- fullCalendar -->
-  <link rel="stylesheet" href="/front-end/css/schedule.css/main.css" />
+  <link rel="stylesheet" href="css/schedule.css/main.css" />
   <!-- Theme style -->
-  <link rel="stylesheet" href="/front-end/css/adminlte.min.css" />
+  <link rel="stylesheet" href="css/adminlte.min.css" />
   <!-- 轉換成中文 -->
   <script src="locales-all.js"></script>
 
@@ -442,7 +442,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="form-group">
                 <label for="nameInput" class="control-label">姓名</label>
                 <select type="text" class="from-control" id="nameInputla" name="nameInput">
-                  <option>請選擇</option>
+                  <option value="0">請選擇</option>
                   <option value="陳花花">陳花花</option>
                   <option value="黃泡泡">黃泡泡</option>
                   <option value="林毛毛">林毛毛</option>
@@ -453,7 +453,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="form-group">
                 <label for="eventTimeInput" class="control-label">班別</label>
                 <select type="text" class="from-control" id="eventTimeInputla" name="eventTimeInput">
-                  <option>請選擇</option>
+                  <option value="0">請選擇</option>
                   <option value="早班">早班</option>
                   <option value="晚班">晚班</option>
                 </select>
@@ -462,7 +462,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <div class="form-group">
                 <label for="relaxInput" class="control-label">假別</label>
                 <select type="text" class="from-control" id="relaxInputla" name="relaxInput">
-                  <option>請選擇</option>
+                  <option value="0">請選擇</option>
                   <option value="基本假">基本假</option>
                   <option value="特休">特休</option>
                   <option value="事假">事假</option>
@@ -504,29 +504,28 @@ scratch. This page gets rid of all links and provides the needed markup only.
   </div>
 
   <!-- jQuery -->
-  <script src="/front-end/plugins/jquery/jquery.min.js"></script>
+  <script src="plugins/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
-  <script src="/front-end/plugins/bootstrap/js/bootstrap.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.js"></script>
   <!-- <script src="/front-end/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
   <!-- Development version -->
   <!-- AdminLTE App -->
-  <script src="/front-end/js/adminlte.min.js"></script>
+  <script src="js/adminlte.min.js"></script>
 
   <!-- fullCalendar 5.10.1 -->
-  <script src="/front-end/plugins/schedule.js/moment.min.js"></script>
-  <script src="/front-end/js/main.js"></script>
+  <script src="plugins/schedule.js/moment.min.js"></script>
+  <script src="js/main.js"></script>
   <!-- AdminLTE for demo purposes -->
-  <script src="/front-end/plugins/schedule.js/demo.js"></script>
+  <script src="plugins/schedule.js/demo.js"></script>
   <!-- jQuery UI -->
-  <script src="/front-end/plugins/schedule.js/jquery-ui.min.js"></script>
+  <script src="plugins/schedule.js/jquery-ui.min.js"></script>
 
   <script>
     $(function () {
-      /* initialize the external events
-     -----------------------------------------------------------------*/
+      // initialize the external events----------------------------------------------
       function ini_events(ele) {
         ele.each(function () {
           // create an Event Object (https://fullcalendar.io/docs/event-object)
@@ -549,8 +548,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
       ini_events($("#external-events div.external-event"));
 
-      /* initialize the calendar
-     -----------------------------------------------------------------*/
+      //  initialize the calendar------------------------------------------------------------
       //Date for the calendar events (dummy data)
       var date = new Date();
       var d = date.getDate(),
@@ -565,8 +563,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-      // initialize the external events
-      // -----------------------------------------------------------------
+      // initialize the external events---------------------------------------------------
 
       new Draggable(containerEl, {
         itemSelector: ".external-event",
@@ -585,15 +582,17 @@ scratch. This page gets rid of all links and provides the needed markup only.
           };
         },
       });
-      //調月曆長度
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        height: 530,
 
-        //轉中文
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        //調月曆長度=============================
+        // height: 530,
+
+        //轉中文================================
         initalView: "dayGridMonth",
         locale: "zh-tw",
         navlinks: true,
-        //月曆頁面表頭，工具列
+        //月曆頁面表頭，工具列===================
         headerToolbar: {
           left: 'prev,next today',
           center: "title",
@@ -606,7 +605,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 
 
 
-        //選擇日期，跳表單框
+        //選擇日期，跳表單框==================================
         dateClick: function (data, event, view) {//顯示編輯畫面事件
           // $("#eventFormButtonsure").data("key", data.id);//事件確認按鈕，綁定事件ID
           // $("#eventFormButtonreremove").data("key", data.id);//事件刪除按鈕，綁定事件ID
@@ -621,7 +620,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       });
 
 
-      //抓日期
+      //抓日期======================================
       var eventa = calendar.getEvents();
       eventa.forEach(function (element) {
         var evId = element["_def"]["publicId"];
@@ -632,7 +631,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       calendar.render();
 
 
-      //取消按鍵，返回初始值
+      //取消按鍵，返回初始值====================================方法一
       var input = document.querySelector('#eventFormButtonCancel');
       input.addEventListener('click', function () {
         document.getElementById("nameInputla").options.selectedIndex = 0;
@@ -647,44 +646,34 @@ scratch. This page gets rid of all links and provides the needed markup only.
         $("#relaxInputla").selectpicker('refresh');
       });
 
-      //x按鍵，返回初始值
-
-      var input = document.querySelector('#inputxxx');
-      input.addEventListener('click', function () {
-        document.getElementById("nameInputla").options.selectedIndex = 0;
-        $("#nameInputla").selectpicker('refresh');
-      });
-      input.addEventListener('click', function () {
-        document.getElementById("eventTimeInputla").options.selectedIndex = 0;
-        $("#eventTimeInputla").selectpicker('refresh');
-      });
-      input.addEventListener('click', function () {
-        document.getElementById("relaxInputla").options.selectedIndex = 0;
-        $("#relaxInputla").selectpicker('refresh');
+      //x按鍵，返回初始值==========================================方法二
+      document.querySelector('#inputxxx').addEventListener(("click"), function (e) {
+        document.querySelector('#nameInputla').value = 0
+        document.querySelector('#eventTimeInputla').value = 0
+        document.querySelector('#relaxInputla').value = 0
       });
 
-
-      /* 確定按鍵，資料呈現 */
-
+      // 確定按鍵，資料呈現==================================
       var currevents = document.getElementById("eventFormButtonsure").addEventListener(("click"), function (e) {
+
         var optionname = $("#nameInputla option:selected");
-        alert(optionname.text());
-        var calendar = new Calendar(calendarEl, {
-
-
-        });
-      });
-      var currevents = document.getElementById("eventFormButtonsure").addEventListener(("click"), function (e) {
         var optiontime = $("#eventTimeInputla option:selected");
-        alert(optiontime.text());
-      });
-      var currevents = document.getElementById("eventFormButtonsure").addEventListener(("click"), function (e) {
         var optionrelax = $("#relaxInputla option:selected");
-        alert(optionrelax.text());
+        // alert(optionname.text());
+        let date = document.querySelector('.fc-daygrid-day.fc-day-today')
+        // console.log(date);
+        date.innerHTML += `
+        <button class="btn btn-primary">${optionname.val()},${optiontime.val()}, ${optionrelax.val()} </button>
+        `
       });
 
+      //月曆上資料按鍵，修改 刪除================================
 
+      //顏色分假別
 
+      // 一天，上限畫假兩人
+
+      // 一月，上限畫八天假
 
     });
 
