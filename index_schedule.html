@@ -21,8 +21,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <link rel="stylesheet" href="css/schedule.css/main.css" />
   <!-- Theme style -->
   <link rel="stylesheet" href="css/adminlte.min.css" />
-  <!-- 轉換成中文 -->
-  <script src="locales-all.js"></script>
 
 </head>
 
@@ -342,7 +340,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
         <!-- /.row -->
 
 
-        <!-- 參考 ADMINLTE-3.2.0套件包/calendar.html -->
         <!-- Main content -->
         <div class="row">
           <!-- <div class="col"> -->
@@ -359,41 +356,48 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <li class="nav-item">
                     <h4 class="list-group-item list-group-item-light">
                       花花
-                      <div class="float-right badge bg-warning">
+                      <div class="float-right badge bg-warning" id="s_button">
                         特休
-                        <span>
+                        <div id="flower_reduce">
                           9
-                        </span>
+                        </div>
                       </div>
                     </h4>
                   </li>
                   <li class="nav-item">
                     <h4 class="list-group-item list-group-item-light">
                       泡泡
-                      <div class="float-right badge bg-warning">
+                      <div class="float-right badge bg-warning" id="s_button">
                         特休
-                        <span>
+                        <div id="pop_reduce">
                           5
-                        </span>
+                        </div>
                       </div>
                     </h4>
                   </li>
                   <li class="nav-item">
                     <h4 class="list-group-item list-group-item-light">
                       毛毛
-                      <div class="float-right badge bg-warning">
+                      <div class="float-right badge bg-warning" id="s_button">
                         特休
-                        <span>
+                        <div id="green_reduce">
                           8
-                        </span>
+                        </div>
                       </div>
                     </h4>
                   </li>
                   <!-- <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      莉莉<span class="float-right badge bg-danger">842</span>
-                    </a>
+                    <h4 class="list-group-item list-group-item-light">
+                      莉莉
+                      <div class="float-right badge bg-warning" id="s_button">
+                        特休
+                        <div id="monkey_reduce" >
+                          6
+                        </div>
+                      </div>
+                    </h4>
                   </li> -->
+
                 </ul>
               </div>
             </div>
@@ -432,45 +436,46 @@ scratch. This page gets rid of all links and provides the needed markup only.
           </div>
           <div class="modal-body">
 
+            <div class="form-form">
+              <form id="eventForm">
+                <div class="form-group">
+                  <label for="dateInput" class="control-label">日期</label>
+                  <input type="text" class="from-control" id="dateInput" name="dateInput" readonly>
+                </div>
 
-            <form id="eventForm">
-              <div class="form-group">
-                <label for="dateInput" class="control-label">日期</label>
-                <input type="text" class="from-control" id="dateInput" name="dateInput" readonly>
-              </div>
+                <div class="form-group">
+                  <label for="nameInput" class="control-label">姓名</label>
+                  <select type="text" class="from-control" id="nameInputla" name="nameInput">
+                    <option value="0">請選擇</option>
+                    <option value="tga001">陳花花</option>
+                    <option value="tga002">黃泡泡</option>
+                    <option value="tga003">林毛毛</option>
 
-              <div class="form-group">
-                <label for="nameInput" class="control-label">姓名</label>
-                <select type="text" class="from-control" id="nameInputla" name="nameInput">
-                  <option value="0">請選擇</option>
-                  <option value="陳花花">陳花花</option>
-                  <option value="黃泡泡">黃泡泡</option>
-                  <option value="林毛毛">林毛毛</option>
+                  </select>
+                </div>
 
-                </select>
-              </div>
+                <div class="form-group">
+                  <label for="eventTimeInput" class="control-label">班別</label>
+                  <select type="text" class="from-control" id="eventTimeInputla" name="eventTimeInput">
+                    <option value="0">請選擇</option>
+                    <option value="am">早班</option>
+                    <option value="pm">晚班</option>
+                  </select>
+                </div>
 
-              <div class="form-group">
-                <label for="eventTimeInput" class="control-label">班別</label>
-                <select type="text" class="from-control" id="eventTimeInputla" name="eventTimeInput">
-                  <option value="0">請選擇</option>
-                  <option value="早班">早班</option>
-                  <option value="晚班">晚班</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="relaxInput" class="control-label">假別</label>
-                <select type="text" class="from-control" id="relaxInputla" name="relaxInput">
-                  <option value="0">請選擇</option>
-                  <option value="基本假">基本假</option>
-                  <option value="特休">特休</option>
-                  <option value="事假">事假</option>
-                  <option value="其他">其他
-                    <!-- 增加可輸入得格子 -->
-                </select>
-              </div>
-            </form>
+                <div class="form-group">
+                  <label for="relaxInput" class="control-label">假別</label>
+                  <select type="text" class="from-control" id="relaxInputla" name="relaxInput">
+                    <option value="0">請選擇</option>
+                    <option value="b">基本假</option>
+                    <option value="s" id="s_reduce">特休</option>
+                    <option value="t">事假</option>
+                    <option value="o">其他
+                      <!-- 增加可輸入得格子 -->
+                  </select>
+                </div>
+              </form>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal" id="eventFormButtonCancel">取消</button>
@@ -510,174 +515,20 @@ scratch. This page gets rid of all links and provides the needed markup only.
     integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
     crossorigin="anonymous"></script>
   <script src="plugins/bootstrap/js/bootstrap.js"></script>
-  <!-- <script src="/front-end/plugins/bootstrap/js/bootstrap.bundle.min.js"></script> -->
   <!-- Development version -->
   <!-- AdminLTE App -->
   <script src="js/adminlte.min.js"></script>
 
   <!-- fullCalendar 5.10.1 -->
   <script src="plugins/schedule.js/moment.min.js"></script>
+  <!--  -->
   <script src="js/main.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="plugins/schedule.js/demo.js"></script>
   <!-- jQuery UI -->
   <script src="plugins/schedule.js/jquery-ui.min.js"></script>
 
-  <script>
-    $(function () {
-      // initialize the external events----------------------------------------------
-      function ini_events(ele) {
-        ele.each(function () {
-          // create an Event Object (https://fullcalendar.io/docs/event-object)
-          // it doesn't need to have a start or end
-          var eventObject = {
-            title: $.trim($(this).text()), // use the element's text as the event title
-          };
-
-          // store the Event Object in the DOM element so we can get to it later
-          $(this).data("eventObject", eventObject);
-
-          // make the event draggable using jQuery UI
-          $(this).draggable({
-            zIndex: 1070,
-            revert: true, // will cause the event to go back to its
-            revertDuration: 0, //  original position after the drag
-          });
-        });
-      }
-
-      ini_events($("#external-events div.external-event"));
-
-      //  initialize the calendar------------------------------------------------------------
-      //Date for the calendar events (dummy data)
-      var date = new Date();
-      var d = date.getDate(),
-        m = date.getMonth(),
-        y = date.getFullYear();
-
-      var Calendar = FullCalendar.Calendar;
-      var Draggable = FullCalendar.Draggable;
-
-      var containerEl = document.getElementById("external-events");
-      var calendarEl = document.getElementById("calendar");
-
-
-
-      // initialize the external events---------------------------------------------------
-
-      new Draggable(containerEl, {
-        itemSelector: ".external-event",
-        eventData: function (eventEl) {
-          return {
-            title: eventEl.innerText,
-            backgroundColor: window
-              .getComputedStyle(eventEl, null)
-              .getPropertyValue("background-color"),
-            borderColor: window
-              .getComputedStyle(eventEl, null)
-              .getPropertyValue("background-color"),
-            textColor: window
-              .getComputedStyle(eventEl, null)
-              .getPropertyValue("color"),
-          };
-        },
-      });
-
-
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        //調月曆長度=============================
-        // height: 530,
-
-        //轉中文================================
-        initalView: "dayGridMonth",
-        locale: "zh-tw",
-        navlinks: true,
-        //月曆頁面表頭，工具列===================
-        headerToolbar: {
-          left: 'prev,next today',
-          center: "title",
-          right: '',
-        },
-        buttonText: {
-          today: '今天',
-        },
-        themeSystem: "bootstrap",
-
-
-
-        //選擇日期，跳表單框==================================
-        dateClick: function (data, event, view) {//顯示編輯畫面事件
-          // $("#eventFormButtonsure").data("key", data.id);//事件確認按鈕，綁定事件ID
-          // $("#eventFormButtonreremove").data("key", data.id);//事件刪除按鈕，綁定事件ID
-          $("#dateInput").val(moment(data.date).format("YYYY-MM-DD"));//事件日期，預設填入被點選的日期，不得修改
-          // $("#nameInput").val(data.eventItem).trigger("change");//事件類型，下拉選單，選單內容為：花花、泡泡、毛毛
-          // $("#eventTimeInput").val(data.eventItem).trigger("change");//事件類型，下拉選單，選單內容為：早班、晚班
-          // $("#relaxInput").val(data.eventItem).trigger("change");//事件類型，下拉選單，選單內容為：基本假、特休、事假、其他
-          // $("#eventFormModalTitle").text("");//修改modal標題名稱
-          // $("#eventFormButtonreremove").show();//顯示刪除按鈕
-          $("#eventFormModal").modal("show");//顯示編輯視窗，供使用者編輯
-        }
-      });
-
-
-      //抓日期======================================
-      var eventa = calendar.getEvents();
-      eventa.forEach(function (element) {
-        var evId = element["_def"]["publicId"];
-        var even = calendar.getEventById(evId);
-        console.log(even.title);
-        console.log(even.start.toISOString());
-      });
-      calendar.render();
-
-
-      //取消按鍵，返回初始值====================================方法一
-      var input = document.querySelector('#eventFormButtonCancel');
-      input.addEventListener('click', function () {
-        document.getElementById("nameInputla").options.selectedIndex = 0;
-        $("#nameInputla").selectpicker('refresh');
-      });
-      input.addEventListener('click', function () {
-        document.getElementById("eventTimeInputla").options.selectedIndex = 0;
-        $("#eventTimeInputla").selectpicker('refresh');
-      });
-      input.addEventListener('click', function () {
-        document.getElementById("relaxInputla").options.selectedIndex = 0;
-        $("#relaxInputla").selectpicker('refresh');
-      });
-
-      //x按鍵，返回初始值==========================================方法二
-      document.querySelector('#inputxxx').addEventListener(("click"), function (e) {
-        document.querySelector('#nameInputla').value = 0
-        document.querySelector('#eventTimeInputla').value = 0
-        document.querySelector('#relaxInputla').value = 0
-      });
-
-      // 確定按鍵，資料呈現==================================
-      var currevents = document.getElementById("eventFormButtonsure").addEventListener(("click"), function (e) {
-
-        var optionname = $("#nameInputla option:selected");
-        var optiontime = $("#eventTimeInputla option:selected");
-        var optionrelax = $("#relaxInputla option:selected");
-        // alert(optionname.text());
-        let date = document.querySelector('.fc-daygrid-day.fc-day-today')
-        // console.log(date);
-        date.innerHTML += `
-        <button class="btn btn-primary">${optionname.val()},${optiontime.val()}, ${optionrelax.val()} </button>
-        `
-      });
-
-      //月曆上資料按鍵，修改 刪除================================
-
-      //顏色分假別
-
-      // 一天，上限畫假兩人
-
-      // 一月，上限畫八天假
-
-    });
-
-  </script>
+  <script src="/plugins/schedule.js/event.js"></script>
 </body>
 
 </html>
