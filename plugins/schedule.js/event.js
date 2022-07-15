@@ -25,9 +25,9 @@ $(function () {
   //  initialize the calendar------------------------------------------------------------
   //Date for the calendar events (dummy data)
   var date = new Date();
-  var d = date.getDate(),
-    m = date.getMonth(),
-    y = date.getFullYear();
+  // var d = date.getDate(),
+  //   m = date.getMonth(),
+  //   y = date.getFullYear();
 
   var Calendar = FullCalendar.Calendar;
   var Draggable = FullCalendar.Draggable;
@@ -160,10 +160,14 @@ $(function () {
         //顏色分假別
         var dayoffcolor;
         var relax = optionrelax.val();
+        var s_reduce = "9";
+
         if (relax == "b") {
           dayoffcolor = "red";
         } else if (relax == "s") {
           dayoffcolor = "green";
+          //送出特休後，特休-1
+          s_reduce--;
         } else if (relax == "t") {
           dayoffcolor = "blue";
         } else {
@@ -178,23 +182,7 @@ $(function () {
         };
 
         //加入事件
-        calendar.addEvent(myEvent); 
-        
-        
-        //送出特休後，特休-1
-      $("#flower_reduce").click(function(){  
-      num = $(num_txt).val();
-      if (num > 0) {
-        if (num == 1) {
-          num--;
-          num_txt.val("1");
-        }
-        else {
-          num--;
-          num_txt.val(num);
-        }
-      }  
-    });
+        calendar.addEvent(myEvent);
 
         document
           .getElementById("eventFormButtonsure")
@@ -205,18 +193,18 @@ $(function () {
         document.querySelector("#eventTimeInputla").value = 0;
         document.querySelector("#relaxInputla").value = 0;
       }
-     
 
-  //刪除鍵
-  //  function aClick() {}
-  //  $("#eventFormButtonreremove").click(function () {
-  //    alert("確認刪除嗎?");
-  //    $("body").remove("click", "#monkey", aClick).find("#monkey").text("");
-  //  });
+      //刪除鍵
+      //  function aClick() {}
+      //  $("#eventFormButtonreremove").click(function () {
+      //    alert("確認刪除嗎?");
+      //    $("body").remove("click", "#monkey", aClick).find("#monkey").text("");
+      //  });
 
-  //月曆上資料，修改 刪除================================
+      //月曆上資料，修改 刪除================================
 
-  // 一天，上限畫假兩人
+      // 一天，上限畫假兩人
 
-  // 一月，上限畫八天假
+      // 一月，上限畫八天假
+    });
 });
